@@ -11,8 +11,10 @@ from services.delete_file_s3 import DeleteFileS3
 def main():
     
     port, debug = parse_command_line()
-    debug = bool(debug)
+    debug = str(debug).lower() != 'false'
+
     print(f'Servidor iniciado na porta {port} com debug={debug}')
+    
     # tornado.options.parse_config_file("server.conf")
     
     app = tornado.web.Application(
